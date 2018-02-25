@@ -1,0 +1,46 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<form id="test-form">
+    <input name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+    <input name="password" type="password" minlength="6" required>
+    <input name="confirm_password" type="password" required >
+    <button type="submit">Send form</button>
+</form>
+
+<style>
+
+</style>
+<script>
+window.onload = function () {
+    document.querySelector("[name=confirm_password]").onchange = validatePassword;
+}
+function validatePassword(){
+if(document.querySelector("[name=confirm_password]").value!=document.querySelector("[name=password]").value)
+    document.querySelector("[name=confirm_password]").setCustomValidity("Wrong password");
+else
+   document.querySelector("[name=confirm_password]").setCustomValidity(''); // пустая строка означает отсутствие ошибок
+}
+$(document).ready(
+	function(){
+$('#test-form').submit(function(event){event.preventDefault();added();});
+});
+
+	  function added() {
+	  	var form =  $('#test-form').get(0);
+	  	  var form_data   = new FormData(form);
+
+	         $.ajax({
+	           type: 'POST',
+	           url: 'add.php',
+	            processData: false,
+    			contentType: false,
+	           data: form_data,
+
+	           success: function(data) {
+	             $('#test-form').html("NICE!");
+	            },
+	            error:  function(xhr, str){
+	  	    alert('ERROR: ' + xhr.responseCode);
+	            }
+	          });
+	      }
+</script>

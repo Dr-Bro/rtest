@@ -1,0 +1,15 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<button class="btn">Click me!</button>
+<style>
+.btn{
+  background:green;
+}
+.btn-disabled{
+  background:grey;
+}
+</style>
+<script>
+$('button').click(function(){
+  $(this).toggleClass('btn-disabled','btn');
+});
+</script>

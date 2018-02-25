@@ -1,0 +1,11 @@
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<button class="btn">Button 1</button>
+<button class="btn btn-disabled">Button 2</button>
+<button class="btn">Button 3</button>
+
+<script type="text/javascript">
+	$('.btn').not('.btn-disabled').each(function(){
+		$(this).click(function(){alert($(this).html())})
+		});
+</script>

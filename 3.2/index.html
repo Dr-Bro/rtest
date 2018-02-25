@@ -1,0 +1,17 @@
+<button class="btn">Click me!</button>
+<style>
+.btn{
+  background:green;
+}
+.btn-disabled{
+  background:grey;
+}
+</style>
+<script>
+var el =  document.querySelector('.btn');
+
+el.onclick = function(){
+	el.classList.toggle('btn');
+	el.classList.toggle('btn-disabled');
+}
+</script>
